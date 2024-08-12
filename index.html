@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Automatyczne Pobieranie Pliku</title>
+    <title>Pobieranie Pliku</title>
     <style>
         body {
             display: flex;
@@ -17,26 +17,6 @@
     </style>
 </head>
 <body>
-    <script>
-        window.onload = function() {
-            // Tworzenie zawartości pliku tekstowego
-            const textContent = "To jest zawartość pliku tekstowego.";
-            
-            // Tworzenie obiektu Blob z zawartością pliku
-            const blob = new Blob([textContent], { type: 'text/plain' });
-            const url = URL.createObjectURL(blob);
-
-            // Tworzenie linku do pobrania pliku
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'plik.txt';
-            a.style.display = 'none';
-
-            // Symulacja kliknięcia w link, aby pobrać plik
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-        }
-    </script>
+    <a href="plik.txt" download="plik.txt">Pobierz plik</a>
 </body>
 </html>
