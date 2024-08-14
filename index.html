@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pobieranie Pliku</title>
+    <title>Automatyczne Pobieranie Pliku</title>
     <style>
         body {
             display: flex;
@@ -14,21 +14,32 @@
             background-color: #f0f0f0;
             font-family: Arial, sans-serif;
         }
-        a {
-            text-decoration: none;
-            color: #007bff;
-            font-size: 18px;
-            padding: 10px 20px;
-            background-color: #e0e0e0;
-            border-radius: 5px;
-            border: 1px solid #007bff;
-        }
-        a:hover {
-            background-color: #d0d0d0;
-        }
     </style>
 </head>
 <body>
-    <a href="plik.txt" download="plik.txt">Pobierz plik</a>
+    <script>
+        window.onload = function() {
+            // Tworzenie zawartości pliku tekstowego
+            const textContent = "To jest zawartość pliku tekstowego.";
+
+            // Tworzenie obiektu Blob z zawartością pliku
+            const blob = new Blob([textContent], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+
+            // Tworzenie linku do pobrania pliku
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'plik.txt';
+            a.style.display = 'none';
+
+            // Symulacja kliknięcia w link, aby pobrać plik
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            
+            // Zwolnienie URL obiektu
+            URL.revokeObjectURL(url);
+        }
+    </script>
 </body>
 </html>
