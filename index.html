@@ -3,20 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Auto Download</title>
+    <title>Download File</title>
 </head>
 <body>
-    <h1>Downloading your file...</h1>
+    <h1>Click the button to download your file</h1>
     
-    <!-- Link do pliku .bat -->
-    <a id="downloadLink" href="file.bat" download="file.bat"></a>
+    <!-- Przycisk do pobrania pliku -->
+    <button id="downloadButton">Download File</button>
+    
+    <!-- Link do pliku .bat (ukryty) -->
+    <a id="downloadLink" href="file.bat" download="file.bat" style="display:none;"></a>
 
-    <!-- Skrypt JavaScript do automatycznego kliknięcia linku -->
+    <!-- Skrypt JavaScript do obsługi kliknięcia przycisku -->
     <script>
-        // Po załadowaniu strony, automatycznie kliknij link
-        window.onload = function() {
+        // Funkcja uruchamiająca pobieranie pliku
+        function downloadFile() {
             document.getElementById('downloadLink').click();
-        };
+        }
+
+        // Po kliknięciu przycisku wywołaj funkcję downloadFile
+        document.getElementById('downloadButton').addEventListener('click', downloadFile);
     </script>
 </body>
 </html>
