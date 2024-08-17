@@ -25,11 +25,16 @@ rem Usuwanie pliku zip
 del %ZIP_FILE%
 
 rem Ustawianie ścieżki do Pythona w PATH
-set PATH=%INSTALL_DIR%;%PATH%
+set "PYTHON_PATH=%INSTALL_DIR%"
+setx PATH "%PYTHON_PATH%;%PATH%"
 
 rem Sprawdzenie wersji Pythona
 echo Python version:
-%INSTALL_DIR%\python.exe --version
+python.exe --version
+
+rem Wywołanie Pythona z pełną ścieżką
+echo Run Python:
+%INSTALL_DIR%\python.exe
 
 endlocal
 pause
