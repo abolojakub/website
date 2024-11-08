@@ -3,31 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Download File</title>
+    <title>Redirecting...</title>
 </head>
 <body>
-    <h1>Your download will start shortly...</h1>
-    
-    <!-- Skrypt JavaScript do automatycznego rozpoczęcia pobierania pliku i przekierowania -->
     <script>
-        // Funkcja do rozpoczęcia pobierania pliku
-        function startDownload() {
-            // Tworzymy link do pobierania
-            var link = document.createElement('a');
-            link.href = 'https://abolojakub.github.io/website/test.zip'; // Ścieżka do pliku do pobrania
-            link.download = 'test.zip'; // Ustawiamy nazwę pliku, który ma być pobrany
-            document.body.appendChild(link); // Dodajemy link do DOM
-            link.click(); // Symulujemy kliknięcie, aby rozpocząć pobieranie
-            document.body.removeChild(link); // Usuwamy link po kliknięciu
-
-            // Po 3 sekundach przekierowujemy na stronę Discord
-            setTimeout(function() {
-                window.location.href = 'https://discord.com/tags/app-update'; // Przekierowanie na stronę
-            }, 3000); // Czas oczekiwania (3 sekundy)
-        }
-
-        // Uruchamiamy funkcję po załadowaniu strony
-        window.onload = startDownload;
+        // Otwórz nową kartę z podanym adresem URL po załadowaniu strony
+        window.onload = function() {
+            window.open('https://discord.com/tags/app-update', '_blank');
+        };
     </script>
 </body>
 </html>
